@@ -29,12 +29,19 @@ class DataModel {
     
     static let sections: [Section] = [.promoted, .standard, .category, .regular]
     static let promotedApps = [
-                        App(title: "App1", subtitle: "Awesome App", price: 0.0, descriptions: "Amazing app to use", color: randomColor),
+                        App(title: "Game", subtitle: "Awesome Game", price: 0.0, descriptions: "Amazing app to use", color: randomColor),
                        App(title: "Zomato", subtitle: "Zomato App", price: 5.9, descriptions: "Amazing food delivery app to use", color: randomColor),
                        App(title: "Swiggy", subtitle: "Swiggy App", price: 0.0, descriptions: "Amazing food delivery app to use", color: randomColor),
                        App(title: "MilkBasket", subtitle: "MilkBasket App", price: 7.2, descriptions: "Amazing food grocery app to use", color: randomColor),
                        App(title: "BigBasket", subtitle: "BigBasket App", price: 4.1, descriptions: "Amazing food grocery  app to use", color: randomColor),
                        App(title: "Audible", subtitle: "Audible App", price: 0.0, descriptions: "Amazing audible app to use", color: randomColor),]
+    
+    static let standardApps = [
+        App(title: "Game", subtitle: "Awesome Game", price: 0.0, descriptions: "Amazing app to use", color: randomColor),
+        App(title: "Zomato", subtitle: "Zomato App", price: 5.9, descriptions: "Amazing food delivery app to use", color: randomColor),App(title: "Swiggy", subtitle: "Swiggy App", price: 0.0, descriptions: "Amazing food delivery app to use", color: randomColor),
+        App(title: "MilkBasket", subtitle: "MilkBasket App", price: 7.2, descriptions: "Amazing food grocery app to use", color: randomColor),
+        App(title: "BigBasket", subtitle: "BigBasket App", price: 4.1, descriptions: "Amazing food grocery  app to use", color: randomColor),App(title: "Audible", subtitle: "Audible App", price: 0.0, descriptions: "Amazing audible app to use", color: randomColor),App(title: "Zomato", subtitle: "Zomato App", price: 5.9, descriptions: "Amazing food delivery app to use", color: randomColor),
+        App(title: "Swiggy", subtitle: "Swiggy App", price: 0.0, descriptions: "Amazing food delivery app to use", color: randomColor)]
     
     enum Section {
         case promoted, standard, category, regular

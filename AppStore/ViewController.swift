@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource {
     
-
+   
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,8 @@ class ViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return DataModel.promotedApps.count
+        }else if section == 1 {
+            return DataModel.standardApps.count
         }
         else {
             return 0
@@ -41,6 +43,15 @@ class ViewController: UIViewController, UICollectionViewDataSource {
                 cell.imageView.backgroundColor = randomColor
             }
             return cell
+        } else if indexPath.section == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "standard", for: indexPath)
+            let standardApp = DataModel.standardApps[indexPath.row]
+            if let cell = cell as? StandardCollectionViewCell {
+                cell.imageView.backgroundColor = randomColor
+                cell.titleLabel.text = standardApp.title
+                cell.subTitleLabel.text = standardApp.subtitle
+            }
+            return cell
         }
         return UICollectionViewCell()
     }
@@ -50,7 +61,7 @@ class ViewController: UIViewController, UICollectionViewDataSource {
             
             let sectionType = DataModel.sections[section]
             switch sectionType {
-            case .promoted, .category, .regular, .standard:
+            case .promoted, .category, .regular:
                 
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 
@@ -64,6 +75,21 @@ class ViewController: UIViewController, UICollectionViewDataSource {
                 
                 section.orthogonalScrollingBehavior = .groupPagingCentered
                 
+                return section
+                
+            case .standard:
+                //create item layout
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.33))
+                
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                //create group layout
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(300))
+                
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count:3)
+                //create section
+                let section = NSCollectionLayoutSection(group: group)
+                
+                section.orthogonalScrollingBehavior = .groupPagingCentered
                 return section
             
             }
